@@ -4,6 +4,7 @@ require 'date'
 
 
 def age_in_days(day, month, year)
-  Date.today - Date.new(year, month, day)
+  age = Date.today - Date.new(year, month, day)
+  age.to_i
 end
 
