@@ -14,5 +14,5 @@ Remember that the method should modifify the array object given in input, not si
 As you realize, the only purpose of a method is not only ti return the result of some computation.. A method can also be there to perform actions on objects that it will modify. Make sure your are confortable with the following notions before moving on.
 - What's an object id ? Type `"something".object_id` in IRB to figure it out.
 - What's an object equality ? When you use `a==b` in a conditional statement, do you test object equality ? What do you test exactly ?
-- (optional) How can we assign a copy of an object `a` to a new variable `b` so that it stores a copy of this object but not the original one ? 
+- (optional) How can we assign a copy of an object `a` to a new variable `b` so that it stores a copy of this object but not the original one ?
 
