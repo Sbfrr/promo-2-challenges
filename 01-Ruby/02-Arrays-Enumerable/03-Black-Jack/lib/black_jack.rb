@@ -1,11 +1,11 @@
 def bank_score
-  # TODO: Use Random to get a new random score
+  16 + rand(4)
 end
 
 def pick_card
-  # TODO: Use Random to get a new random card
+  1 + rand(10)
 end
 
 def game_outcome(bank, score)
-  # TODO: Take the bank and the score and output an array containing the bank and then the score
+  [bank, score]
 end
