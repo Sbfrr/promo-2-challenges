@@ -11,10 +11,12 @@ begin
   # TODO: Add the name we just gotto the students array
 
 end while name != ""
+length = students.length
 
 # TODO: Call `wagon_sort` method and display the sorted student list
 wagon_sort(students)
-puts "Congratulation! Your Wagon has #{students.length} students:"
-for student in students do
-  puts student
+puts "Congratulation! Your Wagon has #{length} students:"
+for i in 0...(length - 2) do
+  print "#{students[i]}, "
 end
+print  "#{students[length - 2]} and #{students[length-1]}"
