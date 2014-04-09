@@ -16,7 +16,11 @@ end
 
 
 def state_of_the_game(score, bank)
+<<<<<<< HEAD
   "Your score is #{score}, bank is #{bank}!"
+=======
+  # TODO: Returns custom message with player's score and bank's score
+>>>>>>> b665b07f415b1196efce9f8e4819cf835e30f816
 end
 
 
