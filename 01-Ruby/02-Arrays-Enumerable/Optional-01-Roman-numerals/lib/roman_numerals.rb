@@ -4,6 +4,7 @@ def old_roman_numeral(integer)
   values = [1000, 500, 100, 50, 10, 5, 1]
   letters = ["M", "D", "C", "L", "X", "V", "I"]
   builder_index = []
+  solution = []
 
   index = 0
   until index == 7 do
@@ -14,20 +15,22 @@ def old_roman_numeral(integer)
 
   index = 0
   until index == 7 do
-    print letters[index]*builder_index[index]
+    solution << letters[index]*builder_index[index]
     index += 1
   end
+  solution.join
 
 end
 
 
 
-def roman_numeral(integer)
+def new_roman_numeral(integer)
 
   #TODO: translate integer in roman number - old-style way
   values = [1000, 500, 100, 50, 10, 5, 1]
   letters = ["M", "D", "C", "L", "X", "V", "I"]
   builder_index = []
+  solution = Array.new
 
   index = 0
   until index == 7 do
@@ -39,26 +42,28 @@ def roman_numeral(integer)
   index = 0
   until index >= 7 do
     if builder_index[index] == 1 && builder_index[index + 1] == 4
-      print letters[index + 1]
-      print letters[index - 1]
+      solution << letters[index + 1]
+      solution << letters[index - 1]
       index += 2
     elsif builder_index[index] == 4
-      print letters[index]
-      print letters[index-1]
+      solution << letters[index]
+      solution << letters[index-1]
       index += 2
     else
-      print letters[index]*builder_index[index]
+      solution << letters[index]*builder_index[index]
       index += 1
     end
   end
 
+  solution.join
+
 end
 
 
-puts "Number?"
-x = gets.chomp.to_i
-puts old_roman_numeral(x)
-puts roman_numeral(x)
+# puts "Number?"
+# x = gets.chomp.to_i
+# puts old_roman_numeral(x)
+# puts roman_numeral(x)
 
 =begin
 
