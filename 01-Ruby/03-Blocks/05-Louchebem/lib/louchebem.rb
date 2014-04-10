@@ -6,6 +6,7 @@
 
 SUFFIX = ["em", "é", "ji", "oc", "ic", "uche", "ès"]
 CONSONNANTS = ["b", "c" ,"d" ,"f" ,"g" ,"h" ,"j" ,"k" ,"l" ,"m" ,"n" ,"p" ,"q" ,"r" ,"s" ,"t" ,"v" ,"w" ,"x" , "z"]
+SPECIAL = [",", ";", ":", ".", "?", "!", "\"", "(", ")", "-", "_" ]
 
 def louchebemize_word(word)
 
@@ -14,8 +15,8 @@ def louchebemize_word(word)
   second = word[1]
 
   unless length == 1
-    if CONSONNANTS.include? (first)
-      if CONSONNANTS.include? (second)
+    if CONSONNANTS.include? (first.downcase)
+      if CONSONNANTS.include? (second.downcase)
         word[0] = ""
         word[0] = ""
         "l#{word}#{first + second}#{SUFFIX[rand(6)]}"
@@ -34,7 +35,7 @@ end
 
 def louchebemize(sentence)
   #TODO: implement your louchebem translator
-  sentence_words = sentence.split(" ")
-  sentence_words_louchebemize = sentence_words.map {|word| louchebemize_word(word)}
-  sentence_words_louchebemize.join(" ")
+  sentence_words = sentence.split(/\b/)
+  sentence_words_louchebemize = sentence_words.map {|word| word =~ /\W/ ? word : louchebemize_word(word) }
+  sentence_words_louchebemize.join("")
 end
