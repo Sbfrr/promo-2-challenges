@@ -17,6 +17,9 @@ ROMAN = {
   "M" => 1000
 }
 
+VALUES = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+LETTERS = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+
 
 
 
@@ -28,19 +31,22 @@ def roman_to_integer(string)
 
     ROMAN.each_key do |key|
       if string[0..1] == key
-        integer += ROMAN[key]
+        index = LETTERS.index(key)
+        integer += VALUES[index]
         string[0..1] = ""
       end
     end
 
     ROMAN.each_key do |key|
       if string[0] == key
-        integer += ROMAN[key]
+        index = LETTERS.index(key)
+        integer += VALUES[index]
         string[0] = ""
       end
     end
 
   end
+
   integer
 
 end
