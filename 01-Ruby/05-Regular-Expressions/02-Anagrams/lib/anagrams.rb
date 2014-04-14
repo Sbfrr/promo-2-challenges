@@ -1,8 +1,25 @@
-def anagrams?(a_string, another_string)
-  #TODO: implement the obvious method to test if two words are anagrams
+
+def sorted(a)
+  b = ""
+  a.each_char do |letter|
+    b += letter.match(/\w+/).to_s
+  end
+  b.downcase.chars.sort.join
 end
 
-def anagrams_on_steroids?(a_string, another_string)
-  #TODO: implement the improved method
+def sorted_hash(a)
+  c = {}
+  sorted(a).each_char do |letter|
+    c[letter] == nil ?  c[letter] = 1 : c[letter] += 1
+  end
 end
-  
+
+def anagrams?(a, b)
+  sorted(a) == sorted(b)
+
+end
+
+def anagrams_on_steroids?(a, b)
+  sorted_hash(a) == sorted_hash(b)
+end
+
