@@ -13,6 +13,7 @@ class BankAccount
   # - You can see the balance of the account (through the position variable)
 
   MIN_DEPOSIT =  100
+  attr_reader :name, :position
 
   def initialize(name, iban, initial_deposit, password)
     raise DepositError, "Insufficient deposit" unless initial_deposit > MIN_DEPOSIT
@@ -25,34 +26,46 @@ class BankAccount
   end
 
   def withdraw(amount)
-    # TODO: Call add_transaction with the right argument
-    # TODO: returns a string with a message
+    add_transaction(-amount)
+    "You just withdraw #{amount}$ from your account."
   end
 
   def deposit(amount)
-    # TODO: Call add_transaction with the right argument
-    # TODO: returns a string with a message
+    add_transaction(amount)
+    "You just deposit #{amount}$ on your account."
   end
 
   def transactions_history(args = {})
-    # TODO: Check if there is a password and if so if it is correct
+    history = ""
+    if args[:password] == nil
+      history += 'no password given'
+    elsif args[:password] != @password
+      history += 'wrong password'
+    else
+      @transactions.each  do |transaction|
+        transaction > 0 ? history += "deposit: #{transaction}" : history += "withdraw: #{-transaction}"
+      end
+    end
+    history
     # TODO: return a string displaying the transactions, BUT NOT return the transaction array !
   end
 
   def iban
-    # TODO: Hide the middle of the IBAN like FR14**************606 and return it
+    length = @iban.length
+    "#{@iban[0...4]}#{"*"*(length-7)}#{@iban[(length-3)...length]}"
   end
 
   def to_s
-    # Method used when printing account object as string (also used for string interpolation)
-    # TODO: Displays the account owner, the hidden iban and the position of the account
+    "Owner: #{@name}\nIBAN: #{self.iban}\nCurrent Amount: #{@position}"
   end
 
   private
 
   def add_transaction(amount)
     # TODO: add the amount in the transactions array
+    @transactions << amount
     # TODO: update the current position (which represents the balance of the account)
+    @position += amount
   end
 
 end
