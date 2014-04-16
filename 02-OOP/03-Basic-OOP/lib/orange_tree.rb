@@ -2,7 +2,6 @@ class OrangeTree
 
   # TODO: Implement all the specs defined in the README.md :)
   attr_reader :height
-  attr_accessor :fruits_count, :fruits
 
   def initialize
     @height = 0
