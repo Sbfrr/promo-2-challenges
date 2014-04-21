@@ -14,27 +14,47 @@ class UI
   def list
     # TODO: call the appropriate controller method with the proper argument(s)
     # TODO: format and display the retrieved data in a numbered list
+    puts @controller.list
   end
 
   def add
     # TODO: ask the user a recipe name
     # TODO: call the appropriate controller method with the proper argument(s)
+    @controller.add(gets.chomp)
   end
 
   def del
     # TODO: ask the user a recipe index
     # TODO: call the appropriate controller method with the proper argument(s)
+    @controller.del(gets.chomp)
   end
 
   def exit
     # TODO: exit the program
     # Hint: Take a look at the display method !
+    @controller.exit()
+    @running = false
   end
 
   def user_input
     # TODO: Get the user input and return it
     # [OPTIONAL] You can think of the case where the user
     # enters a wrong choice.
+    case gets.chomp
+    when "list"
+      "list"
+    when "add"
+      "add"
+    when "del"
+      "del"
+    when "exit"
+      "exit"
+    else
+      puts "Wrong choice!"
+      display_tasks
+      dispatch(user_input)
+    end
+
   end
 
   def display

@@ -1,9 +1,37 @@
-class Cookbook
+require 'csv'
+
+class CookBook
+
+  attr_reader :data
+
   def initialize(file)
-    # TODO: Retrieve the data from your CSV file and store it in an instance variable
+    load_csv(file)
   end
 
-  # TODO: Implement the methods to retrieve all recipes, create, or destroy recipes
-  # TODO: Implement a save method that will write the data into the CSV
-  # And don't forget to use this save method when you have to modify something in your recipes array.
+  def list
+    @data
+  end
+
+  def add(recipe)
+    @data << [recipe]
+  end
+
+  def del(recipe)
+    @data.map!{|r| r[0] == recipe ? nil : r }.compact!
+    @data
+  end
+
+  def load_csv(file)
+    @data = []
+    CSV.foreach(file) {|row| @data << row}
+  end
+
+  def save_to_csv(path)
+    CSV.open(path, "wb") do |csv|
+      @data.each {|recipe| csv << recipe}
+    end
+  end
+
 end
+
+
