@@ -16,10 +16,10 @@ end
 
 def love_tracks(db)
   #TODO: return array of love songs
-  db.execute("SELECT Name FROM track WHERE Name LIKE  "%love%"")
+  db.execute("SELECT Name FROM track WHERE Name LIKE  '%love%'")
 end
 
 def long_tracks(db, min_length)
   #TODO: return tracks verifying: duration > min_length (minutes)
-  db.execute("SELECT Name FROM track WHERE track.Milliseconds > min_length * 60000;")
+  db.execute("SELECT Name FROM track WHERE Milliseconds > min_length * 60000")
 end
