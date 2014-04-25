@@ -24,4 +24,3 @@ def long_tracks(db, min_length)
   db.execute("SELECT Name FROM track WHERE Milliseconds > #{min_length} * 60000").flatten
 end
 
-puts number_of_rows(db, "artist")
