@@ -7,6 +7,10 @@ class Controller
     @file = file
   end
 
+  def import(ingredient)
+    @cookbook.import(ingredient)
+  end
+
   def list
     # TODO: call the appropriate controller method with the proper argument(s)
     # TODO: format and display the retrieved data in a numbered list

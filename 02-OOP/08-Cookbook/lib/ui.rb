@@ -1,5 +1,6 @@
 class UI
   TASKS = {
+    import: "- Import recipes from Marmiton [import]",
     list: "- List all recipes [list]",
     add:  "- Add a new recipe [add]",
     del:  "- Delete a recipe [del]",
@@ -11,10 +12,20 @@ class UI
     @running = true
   end
 
+  def import
+    puts "Import recipes for which ingredient ?"
+    @controller.import(gets.chomp)
+  end
+
   def list
     # TODO: call the appropriate controller method with the proper argument(s)
     # TODO: format and display the retrieved data in a numbered list
-    puts @controller.list
+    recipes = @controller.list
+    recipes.each do |recipe|
+      puts "#{recipe[0]}, #{recipe[1]} #{recipe[2]}"
+      puts "Préparation : #{recipe[3]}, Cuisson : #{recipe[4]}"
+      puts "-----------------"
+    end
   end
 
   def add
@@ -41,6 +52,8 @@ class UI
     # [OPTIONAL] You can think of the case where the user
     # enters a wrong choice.
     case gets.chomp
+    when "import"
+      "import"
     when "list"
       "list"
     when "add"
