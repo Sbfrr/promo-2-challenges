@@ -1,14 +1,14 @@
 require_relative "../config/application"
 require_relative "../app/models/post"
 require_relative "../app/models/user"
- 
- 
+
+
 puts "Seeding database..."
- 
+
 # Scraping Hacker news
 html_file = open("https://news.ycombinator.com/")
 html_doc = Nokogiri::HTML(html_file)
- 
+
 posts = {}
 ratings = []
 
@@ -22,7 +22,7 @@ html_doc.search('table table tr td.subtext').each do |element|
 end
 
 # Creating fake users
-1.upto(10) { User.create(name: Faker::Name.name, email: Faker::Internet.email) }
+5.times { User.create(name: Faker::Name.name, email: Faker::Internet.email) }
 
 # Create fake news for each one
 User.all.each do |user|
@@ -30,6 +30,6 @@ User.all.each do |user|
   post_name = posts.keys[index]
   post_url = posts[post_name]
   post_rating = ratings[index]
-  
+
   user.posts.create(name: post_name, date: Time.now, rating: post_rating, source_url: post_url)
 end
